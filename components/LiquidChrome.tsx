@@ -96,7 +96,7 @@ const fragmentShader = `
 export default function LiquidChrome() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mouseRef = useRef({ x: 0.5, y: 0.5 });
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     const handleMouseMove = useCallback((e: MouseEvent) => {
         mouseRef.current = {
