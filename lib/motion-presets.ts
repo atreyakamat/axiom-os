@@ -98,3 +98,81 @@ export const staggerItem: Variants = {
         transition: springConfigs.smooth,
     },
 };
+
+// Micro tilt for cursor-reactive elements (±2°)
+export const microTilt: Variants = {
+    initial: { rotateX: 0, rotateY: 0 },
+    tilt: (custom: { x: number; y: number }) => ({
+        rotateX: custom.y * 2,
+        rotateY: custom.x * -2,
+        transition: { type: 'spring', stiffness: 200, damping: 30 },
+    }),
+};
+
+// Slow breathing glow effect
+export const breathe: Variants = {
+    initial: { opacity: 0.3 },
+    animate: {
+        opacity: [0.3, 0.6, 0.3],
+        transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+        },
+    },
+};
+
+// Z-axis focus transition for workspace panels
+export const zFocus: Variants = {
+    unfocused: {
+        z: 0,
+        scale: 0.95,
+        filter: 'blur(2px)',
+        opacity: 0.7,
+        transition: springConfigs.slow,
+    },
+    focused: {
+        z: 50,
+        scale: 1,
+        filter: 'blur(0px)',
+        opacity: 1,
+        transition: springConfigs.smooth,
+    },
+};
+
+// Very slow idle floating animation
+export const slowFloat: Variants = {
+    initial: { y: 0, x: 0 },
+    animate: {
+        y: [-4, 4, -4],
+        x: [-2, 2, -2],
+        transition: {
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+        },
+    },
+};
+
+// Magnetic pull effect for interactive elements
+export const magneticPull: Variants = {
+    initial: { x: 0, y: 0 },
+    pull: (custom: { x: number; y: number }) => ({
+        x: custom.x * 10,
+        y: custom.y * 10,
+        transition: { type: 'spring', stiffness: 300, damping: 20 },
+    }),
+};
+
+// Scale with weight for button press
+export const pressWeight: Variants = {
+    initial: { scale: 1 },
+    hover: {
+        scale: 1.02,
+        transition: springConfigs.smooth,
+    },
+    tap: {
+        scale: 0.97,
+        transition: { type: 'spring', stiffness: 400, damping: 15 },
+    },
+};

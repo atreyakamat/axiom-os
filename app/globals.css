@@ -134,3 +134,67 @@ body {
 .transition-slow {
   transition: all var(--duration-slow) var(--spring-smooth);
 }
+
+/* Glass Pill - for navbar */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+}
+
+/* Breathing Glow Animation */
+@keyframes breathe {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.breathing-glow {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Edge Glow - Purple */
+.edge-glow-purple {
+  box-shadow:
+    0 0 20px rgba(167, 139, 250, 0.15),
+    inset 0 0 20px rgba(196, 181, 253, 0.05);
+}
+
+/* Focus Blur Transition */
+.focus-blur {
+  transition: filter var(--duration-medium) var(--spring-smooth);
+}
+
+.focus-blur.unfocused {
+  filter: blur(2px);
+}
+
+/* Scroll-based variables (for JS to update) */
+:root {
+  --scroll-blur: 16px;
+  --scroll-opacity: 0.05;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

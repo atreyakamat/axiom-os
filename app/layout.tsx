@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import SystemBar from "@/components/ui/SystemBar";
-import Sidebar from "@/components/ui/Sidebar";
 
 export const metadata: Metadata = {
-  title: "Axiom OS - Designed Around Clarity, Restraint, and Intention",
-  description: "A concept OS-inspired showcase demonstrating system-level UI thinking, calm UX, and consistent design architecture.",
-  keywords: ["design system", "UI showcase", "glassmorphism", "operating system", "product design"],
+  title: "AXIOM OS — An Operating System Without Noise",
+  description: "A calm, ad-free operating system experience. Designed around clarity, restraint, and intention.",
+  keywords: ["design system", "UI showcase", "glassmorphism", "operating system", "product design", "calm UX"],
 };
 
 export default function RootLayout({
@@ -16,12 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <SystemBar />
-        <Sidebar />
-        <main className="ml-20 mt-16">
-          {children}
-        </main>
+      <body className="antialiased bg-background">
+        {children}
       </body>
     </html>
   );
