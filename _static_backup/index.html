@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axiom Glass OS</title>
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Ambient Background Layers -->
+    <div class="ambient-layer layer-1"></div>
+    <div class="ambient-layer layer-2"></div>
+    <div class="ambient-layer layer-3"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Main OS Container -->
+    <main class="os-desktop" id="os-desktop">
+
+        <!-- Top Status Bar -->
+        <header class="glass-bar top-bar">
+            <div class="left-controls">
+                <span class="os-logo">Axiom OS</span>
+                <nav class="top-nav">
+                    <a href="#" class="nav-item active">System</a>
+                    <a href="#" class="nav-item">View</a>
+                    <a href="#" class="nav-item">Window</a>
+                </nav>
+            </div>
+            <div class="right-controls">
+                <span id="clock" class="clock">12:00</span>
+                <div class="status-icons">
+                    <span class="icon">wifi</span>
+                    <span class="icon">battery_full</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Central Workspace / Window -->
+        <section class="glass-window-container" id="main-window">
+            <div class="glass-window active">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <span class="window-title">Welcome.rtf</span>
+                </div>
+                <div class="window-content">
+                    <h1 class="hero-title">Spatial<br>Resonance.</h1>
+                    <p class="hero-subtitle">
+                        An operating system that breathes. Depth, clarity, and silence engineered for the next
+                        generation of thought.
+                    </p>
+
+                    <div class="action-area">
+                        <button class="glass-btn primary">Initialize System</button>
+                        <button class="glass-btn secondary">View Principles</button>
+                    </div>
+
+                    <div class="glass-card-grid">
+                        <div class="glass-card">
+                            <span class="card-icon">blur_on</span>
+                            <h3>Refractive Engine</h3>
+                            <p>Real-time layered blur synthesis.</p>
+                        </div>
+                        <div class="glass-card">
+                            <span class="card-icon">layers</span>
+                            <h3>Z-Axis Layout</h3>
+                            <p>Spatial hierarchy for deep focus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Dock -->
+        <footer class="glass-dock-container">
+            <div class="glass-dock">
+                <div class="dock-item" data-tooltip="Finder"><span class="icon">folder</span></div>
+                <div class="dock-item" data-tooltip="Messages"><span class="icon">chat_bubble</span></div>
+                <div class="dock-item active" data-tooltip="Editor"><span class="icon">edit</span></div>
+                <div class="dock-item" data-tooltip="Photos"><span class="icon">photo_library</span></div>
+                <div class="separator"></div>
+                <div class="dock-item" data-tooltip="Settings"><span class="icon">settings</span></div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Google Material Icons (Round) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <script src="js/app.js"></script>
+</body>
+
+</html>
