@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GLASS OS — Design Token System
+   Inspired by Linear aesthetics + visionOS materiality
+   ============================================================ */
+
+:root {
+  /* Atmospheric Grays */
+  --bg-void: #080808;
+  --surface-base: #0F1115;
+  --surface-elevated: #16181D;
+  --surface-glass: rgba(18, 18, 18, 0.65);
+  --surface-glass-hover: rgba(24, 24, 30, 0.75);
+  --border-subtle: #22252B;
+  --border-luminous: #3F4451;
+
+  /* Linear Purple Accent System */
+  --accent-primary: #5E6AD2;
+  --accent-primary-rgb: 94, 106, 210;
+  --accent-glow: rgba(94, 106, 210, 0.5);
+  --accent-glow-soft: rgba(94, 106, 210, 0.15);
+  --accent-glow-intense: rgba(94, 106, 210, 0.7);
+
+  /* Cyan secondary */
+  --accent-secondary: #4CC9F0;
+  --accent-secondary-rgb: 76, 201, 240;
+
+  /* Lavender Tertiary */
+  --accent-tertiary: #9B8FFF;
+  --accent-tertiary-rgb: 155, 143, 255;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-tertiary: rgba(255, 255, 255, 0.35);
+  --text-accent: var(--accent-primary);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* Blur Levels */
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+  --blur-xl: 40px;
+
+  /* Shadows */
+  --shadow-window: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-subtle);
+  --shadow-window-focused: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-luminous), 0 0 12px var(--accent-glow-soft);
+  --shadow-dock: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-geist-mono), "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Tailwind v4 theme inline */
+@theme inline {
+  --color-background: var(--bg-void);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Custom colors for Tailwind */
+  --color-void: #080808;
+  --color-surface-base: #0F1115;
+  --color-surface-elevated: #16181D;
+  --color-border-subtle: #22252B;
+  --color-border-luminous: #3F4451;
+  --color-accent: #5E6AD2;
+  --color-accent-cyan: #4CC9F0;
+  --color-accent-lavender: #9B8FFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-tertiary: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   Global Resets & Base
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  height: 100dvh;
+  width: 100dvw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* ============================================================
+   The "Liquid Glass" Material Stack
+   ============================================================ */
+
+.glass-surface {
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.glass-surface-elevated {
+  background: var(--surface-glass-hover);
+  backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  border: 1px solid var(--border-luminous);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 12px var(--accent-glow-soft);
+}
+
+.glass-glow-border {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 0 1px var(--accent-glow),
+    0 0 12px rgba(94, 106, 210, 0.3);
+}
+
+/* ============================================================
+   Noise Texture Overlay
+   ============================================================ */
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================================
+   Ambient Background Layers
+   ============================================================ */
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+}
+
+.ambient-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(94, 106, 210, 0.15), transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation: float-1 25s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(76, 201, 240, 0.08), transparent 70%);
+  bottom: -15%;
+  right: -10%;
+  animation: float-2 30s ease-in-out infinite;
+}
+
+.ambient-orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(155, 143, 255, 0.1), transparent 70%);
+  top: 40%;
+  left: 50%;
+  animation: float-3 20s ease-in-out infinite;
+}
+
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, 30px) scale(1.05); }
+  50% { transform: translate(-20px, 60px) scale(0.95); }
+  75% { transform: translate(30px, -20px) scale(1.02); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-40px, -30px) scale(1.08); }
+  66% { transform: translate(50px, 20px) scale(0.96); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, 40px) scale(1.1); }
+}
+
+/* ============================================================
+   Scrollbar Styling
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-luminous);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* ============================================================
+   Accessibility: Reduced Motion & High Contrast
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ambient-orb {
+    animation: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .glass-surface,
+  .glass-surface-elevated {
+    background: var(--surface-elevated);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 2px solid var(--border-luminous);
+  }
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+
+.text-grid-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.text-ui-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+}
+
+.text-body-small {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.text-body-main {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.text-heading-h3 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.text-heading-h1 {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.text-mono-data {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+}
